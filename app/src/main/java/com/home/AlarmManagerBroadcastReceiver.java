@@ -8,6 +8,8 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        context.startActivity(new Intent(context, AlertActivity.class));
+        Intent startIntent = new Intent(context, AlertActivity.class);
+        startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(startIntent);
     }
 }

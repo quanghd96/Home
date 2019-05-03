@@ -40,7 +40,7 @@ public class MyService extends Service {
         super.onCreate();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference mRef = database.getReference("RFID_STATUS");
+        DatabaseReference mRef = database.getReference("RFID_STATUS").child("value");
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
