@@ -32,7 +32,7 @@ public class MyService extends Service {
         }
     }
 
-    private LocalBinder binder = new LocalBinder();
+    private final IBinder binder = new LocalBinder();
 
 
     @Override
