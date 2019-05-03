@@ -34,6 +34,8 @@ public class MyService extends Service {
 
     private final IBinder binder = new LocalBinder();
 
+    private boolean isFirst = true;
+
 
     @Override
     public void onCreate() {
@@ -44,8 +46,9 @@ public class MyService extends Service {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                isFirst = false;
                 String data = dataSnapshot.getValue(String.class);
-                if (data != null && data.contains("sai the")) {
+                if (data != null && data.contains("sai the") && !isFirst) {
                     alert();
                 }
             }
