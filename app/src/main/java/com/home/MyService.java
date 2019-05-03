@@ -36,7 +36,6 @@ public class MyService extends Service {
 
     private boolean isFirst = true;
 
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -46,11 +45,11 @@ public class MyService extends Service {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                isFirst = false;
                 String data = dataSnapshot.getValue(String.class);
-                if (data != null && data.contains("sai the") && !isFirst) {
+                if (!isFirst && data != null && data.contains("sai the")) {
                     alert();
                 }
+                if (isFirst) isFirst = false;
             }
 
             @Override
